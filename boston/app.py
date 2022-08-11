@@ -4,12 +4,14 @@ import os
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
 import pickle
-from loggingModule import makeLog
+#from loggingModule import makeLog
 import numpy as np
 #model , tokenizer = load_Model_Tokenizer()
-log = makeLog()
+#log = makeLog()
 import sys
-
+'''
+logging works in desktop when the server is in locally running. 
+'''
 
 if not sys.warnoptions:
     import warnings
@@ -23,10 +25,12 @@ def loadModel():
             LassoModel = pickle.load(LR_input)
         with open(r"ridge_model.sav", "rb") as LR_input:
             RidgeModel = pickle.load(LR_input)
-        log.info('All the models have been loaded sucessfully.')
+        #log.info('All the models have been loaded sucessfully.')
+        print('All the models have been loaded sucessfully.')
         return LR, LassoModel, RidgeModel
     except Exception as e:
-        log.error(e)
+        #log.error(e)
+        print(str(e))
 def predict(data):
     try:
         model = {}
@@ -37,16 +41,19 @@ def predict(data):
         model['Lasso Regression Prediction'] = LS.predict(d)[0]
         model['Ridge Regression Prediction'] = RM.predict(d)[0]
         model['Average Prediction Value'] = ((LR.predict(d)[0]+LS.predict(d)[0]+RM.predict(d)[0])/3)
-        log.info('Model Predicted successfully.')
+        #log.info('Model Predicted successfully.')
+        print('Model Predicted successfully.')
         return model
     except Exception as e:
-        log.error(e)
+        #log.error(e)
+        print(e)
 @app.route('/')  
 def home():
     try:
         return render_template("home.html")  
     except Exception as e:
-        log.error(e)
+        #log.error(e)
+        print(e)
  
 @app.route('/', methods = ['POST','GET'])  
 def success():
@@ -54,22 +61,27 @@ def success():
         try:
             if request.method == 'GET':
                 return make_response('failure')
-            log.debug('HTTP response is not right, please debug it.')
+            #log.debug('HTTP response is not right, please debug it.')
+            print('HTTP response is not right, please debug it.')
         except Exception as e:
-            log.error(e)
+            #log.error(e)
+            print(e)
         try:
             if request.method == 'POST':
                 try:
                     result = request.form
                     data = result.to_dict(flat=True).values()
                     print(data)
-                    log.info('Data has been successfully populated')
+                    #log.info('Data has been successfully populated')
+                    print('Data has been successfully populated')
                 except Exception as e:
-                    log.debug('Data is not getting populated.')
+                    #log.debug('Data is not getting populated.')
+                    print('Data is not getting populated.')
                 try:
                     a = predict(data)
                 except Exception as e:
-                    log.error(e)
+                    #log.error(e)
+                    print(e)
                 def dict2htmltable(data):
                     try:
                         #html = '<thead>' + 'boston data prediction' + '</thead>'
@@ -91,17 +103,21 @@ def success():
             
                             </body>
                             </html>"""
-                        log.info('Prediction data has been successfully populated.')
+                        #log.info('Prediction data has been successfully populated.')
+                        print('Prediction data has been successfully populated.')
                     except Exception as e:
-                        log.error(e)
+                        #log.error(e)
+                        print(e)
                     return final_html.format('<table style = "border: 3px solid white;margin-left:auto;margin-right:auto; font-size:20px color:white; " id="table1">' + html + '</table>')
                 html = dict2htmltable([a])
                 with open("templates/table.html", "w") as file:
                     file.write(html)    
             return render_template("table.html")
         except Exception as e:
-            log.error(e)
+            #log.error(e)
+            print(e)
     except Exception as e:
-        log.error(e)
+        #log.error(e)
+        print(e)
 if __name__ == '__main__':  
     app.run()  
