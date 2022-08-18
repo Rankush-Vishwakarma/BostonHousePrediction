@@ -1,0 +1,128 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Boston Housing prediction</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+    </script>
+    <style>
+        form input {
+            position: relative;
+            font-family: "Source Sans Pro", sans-serif;
+            font-weight: 600;
+            width: 100%;
+            height: 40px;
+            border: none;
+            padding: 0 10px;
+            box-shadow: none;
+            outline: none;
+            -webkit-transition: all .5s ease;
+            -moz-transition: all .5s ease;
+            -ms-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+            .form.round {
+                border-radius: 40px;
+            }
+
+            .form.shutter-in {
+                border-bottom: 2px solid rgba(0, 0, 0, .2);
+                background: transparent;
+            }
+
+                .form.shutter-in:focus {
+                    border-color: rgba(0, 0, 0, .3);
+                    box-shadow: 0 -50px 0 #d5d5d5 inset;
+                }
+
+        .form label {
+            color: white;
+        }
+        body {
+            background-image: radial-gradient(circle, #353535, #313439, #27343c, #19353b, #0a3535);
+        }
+    </style>
+</head>
+<body padding:50px">
+    <div class="container" style="color:white; margin-top:10px; text-align:center;" >
+            <h1><b>The Boston Housing prediction</b></h1>
+    </div>
+    <div class="container" style="width: 600px; margin-top: 30px; ">
+        <form action="/" method="post">
+            <div class="form-group">
+                <label for="id1" style="color: white">Weighted distances to five Boston employment centres (DIS)</label>
+                <input class="form-control" type="number"
+                       id="id1" step="0.01" value='0' name="DIS">
+            </div>
+
+            <div class="form-group">
+                <label for="id2" style="color: white"> 1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town (B) </label>
+                <input class="form-control" type="number"
+                       id="id2" step="0.01" value='0' name="B">
+            </div>
+
+            <div class="form-group">
+                <label for="id3" style="color: white"> Proportion of residential land zoned for lots over 25,000 sq.ft.(ZN)</label>
+                <input class="form-control" type="number"
+                       id="id3" placeholder="Enter DIS" step="0.01" value='0' name="ZN">
+            </div>
+
+            <div class="form-group">
+                <label for="id4" style="color: white">  Average number of rooms per dwelling(RM)</label>
+                <input class="form-control" type="number"
+                       id="id4" placeholder="Enter DIS" step="0.01" value='0' name="pswd">
+            </div>
+            <div class="form-group">
+                <label for="id5" style="color: white"> % Lower status of the population (LSTAT)</label>
+                <input class="form-control" type="number"
+                       id="id5" placeholder="Enter DIS" step="0.01" value='0' name="LSTAT">
+            </div>
+            <div class="form-group">
+                <label for="id6" style="color: white"> Pupil-teacher ratio by town (PTRATIO)</label>
+                <input class="form-control" type="number"
+                       id="id6" placeholder="Enter DIS" step="0.01" value='0' name="PTRATIO">
+            </div>
+            <div class="form-group">
+                <label for="id7" style="color: white"> Proportion of non-retail business acres per town (INDUS)</label>
+                <input class="form-control" type="number"
+                       id="id7" placeholder="Enter DIS" step="0.01" value='0' name="INDUS">
+            </div>
+            <div class="form-group">
+                <label for="id8" style="color: white"> Proportion of non-retail business acres per town (TAX)</label>
+                <input class="form-control" type="number"
+                       id="id8" placeholder="Enter DIS" step="0.01" value='0' name="TAX">
+            </div><div class="form-group">
+                      <label for="id9" style="color: white"> Nitric oxides concentration (parts per 10 million) (NOX)</label>
+                <input class="form-control" type="number"
+                       id="id9" placeholder="Enter DIS" step="0.01" value='0' name="NOX">
+            </div><div class="form-group">
+                      <label for="id10" style="color: white"> Per capita crime rate by town (CRIM)</label>
+                <input class="form-control" type="number"
+                       id="id10" placeholder="Enter DIS" step="0.01" value='0' name="CRIM">
+            </div><div class="form-group">
+                      <label for="id11" style="color: white"> Proportion of owner-occupied units built prior to 1940 (AGE)</label>
+                <input class="form-control" type="number"
+                       id="id11" placeholder="Enter DIS" step="0.01" value='0' name="AGE">
+            </div><div class="form-group">
+                      <label for="id12" style="color: white"> Index of accessibility to radial highways (RAD)</label>
+                <input class="form-control" type="number"
+                       id="id12" placeholder="Enter DIS" step="0.01" value='0' name="RAD">
+            </div>
+
+            <div class="container" style="margin-left:30%">
+                <button type="submit" class="btn btn-success" ;>
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
