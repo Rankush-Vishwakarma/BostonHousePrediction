@@ -129,4 +129,4 @@ def success():
         #print(e)
         pass
 if __name__ == '__main__':  
-    app.run()  
+    app.run(debug=True)  
