@@ -26,11 +26,12 @@ def loadModel():
         with open(r"ridge_model.sav", "rb") as LR_input:
             RidgeModel = pickle.load(LR_input)
         #log.info('All the models have been loaded sucessfully.')
-        print('All the models have been loaded sucessfully.')
+        #print('All the models have been loaded sucessfully.')
         return LR, LassoModel, RidgeModel
     except Exception as e:
         #log.error(e)
-        print(str(e))
+        #print(str(e))
+        pass
 def predict(data):
     try:
         model = {}
@@ -42,18 +43,20 @@ def predict(data):
         model['Ridge Regression Prediction'] = RM.predict(d)[0]
         model['Average Prediction Value'] = ((LR.predict(d)[0]+LS.predict(d)[0]+RM.predict(d)[0])/3)
         #log.info('Model Predicted successfully.')
-        print('Model Predicted successfully.')
+        #print('Model Predicted successfully.')
         return model
     except Exception as e:
         #log.error(e)
-        print(e)
+        #print(e)
+        pass
 @app.route('/')  
 def home():
     try:
         return render_template("home.html")  
     except Exception as e:
         #log.error(e)
-        print(e)
+        #print(e)
+        pass
  
 @app.route('/', methods = ['POST','GET'])  
 def success():
@@ -62,10 +65,11 @@ def success():
             if request.method == 'GET':
                 return make_response('failure')
             #log.debug('HTTP response is not right, please debug it.')
-            print('HTTP response is not right, please debug it.')
+            #print('HTTP response is not right, please debug it.')
         except Exception as e:
             #log.error(e)
-            print(e)
+            #print(e)
+            pass
         try:
             if request.method == 'POST':
                 try:
@@ -76,12 +80,14 @@ def success():
                     #print('Data has been successfully populated')
                 except Exception as e:
                     #log.debug('Data is not getting populated.')
-                    print('Data is not getting populated.')
+                    #print('Data is not getting populated.')
+                    pass
                 try:
                     a = predict(data)
                 except Exception as e:
                     #log.error(e)
-                    print(e)
+                    #print(e)
+                    pass
                 def dict2htmltable(data):
                     try:
                         #html = '<thead>' + 'boston data prediction' + '</thead>'
@@ -104,10 +110,11 @@ def success():
                             </body>
                             </html>"""
                         #log.info('Prediction data has been successfully populated.')
-                        print('Prediction data has been successfully populated.')
+                        #print('Prediction data has been successfully populated.')
                     except Exception as e:
                         #log.error(e)
-                        print(e)
+                        #print(e)
+                        pass
                     return final_html.format('<table style = "border: 3px solid white;margin-left:auto;margin-right:auto; font-size:20px color:white; " id="table1">' + html + '</table>')
                 html = dict2htmltable([a])
                 with open("templates/table.html", "w") as file:
@@ -115,9 +122,11 @@ def success():
             return render_template("table.html")
         except Exception as e:
             #log.error(e)
-            print(e)
+            #print(e)
+            pass
     except Exception as e:
         #log.error(e)
-        print(e)
+        #print(e)
+        pass
 if __name__ == '__main__':  
     app.run()  
