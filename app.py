@@ -71,9 +71,9 @@ def success():
                 try:
                     result = request.form
                     data = result.to_dict(flat=True).values()
-                    print(data)
+                    #print(data)
                     #log.info('Data has been successfully populated')
-                    print('Data has been successfully populated')
+                    #print('Data has been successfully populated')
                 except Exception as e:
                     #log.debug('Data is not getting populated.')
                     print('Data is not getting populated.')
