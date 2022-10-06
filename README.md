@@ -1,7 +1,7 @@
 # BostonHousePrediction
 An API for predicting the Boston housing prediction.
 
-# SoftwareRequirementClassifier
+# BostonHousePrediction
     This is a Flask API that helps in predicting boston housing Median price. Boston housing prediction is one of the base problem when it comes in solving linear regression problem.
 
 # Dependencies
